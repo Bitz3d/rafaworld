@@ -8,21 +8,19 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <%--<link rel="stylesheet" type="text/css" href="/resources/css/style.css" />--%>
-    <%--<link rel="stylesheet" type="text/css" href="/resources/css/style.css" />--%>
-    <title><s:message code="menu.register"/></title>
+    <link rel="stylesheet" type="text/css" href="/resources/css/style.css" />
+    <title><s:message code="profilEdit.pageName"/></title>
 </head>
+<body>
 <body>
 <%@include file="/WEB-INF/incl/menu.app" %>
 
-<h2><s:message code="menu.register"/></h2>
+<h2 align="center"><s:message code="profilEdit.pageName"/></h2>
 
-<p align="center">
-    <c:out value="${message }" />
-</p>
-
-<sf:form id="usersForm" action="/adduser" modelAttribute="user"
+<sf:form id="usersForm" action="updateprofil" modelAttribute="user"
          enctype="multipart/form-data" method="POST">
+
+    <sf:hidden path="id"/>
 
     <table width="500" border="0" cellpadding="4" cellspacing="1"
            align="center">
@@ -55,30 +53,16 @@
         </tr>
 
         <tr>
-            <td width="130" align="right" ><s:message code="register.password"/></td>
-            <td width="270" align="left"><sf:password path="password" size="28" /></td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center"><font color="red"><sf:errors path="password"/></font></td>
-        </tr>
-
-        <tr>
             <td colspan="2" align="center" bgcolor="#fff">
-                <input type="submit" value="<s:message code="button.register"/>" />
-                <input type="button" value="<s:message code="button.cancel"/>" onclick="window.location.href='${pageContext.request.contextPath}/'"/>
+                <input type="submit" value="<s:message code="button.save"/>" />
+                <input type="button" value="<s:message code="button.cancel"/>"
+                       onclick="window.location.href='${pageContext.request.contextPath}/'"/>
             </td>
         </tr>
 
     </table>
-    <table width="500" border="0" cellpadding="4" cellspacing="1"
-           align="center">
-        <td colspan="2" align="center" bgcolor="#fff">
-            <input type="submit" value="<s:message code="button.register"/>"/>
-        </td>
-    </table>
 
 </sf:form>
-
 
 </body>
 </html>
