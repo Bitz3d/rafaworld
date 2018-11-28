@@ -81,7 +81,7 @@ public class ProfilController {
 		String username = UserUtils.getLoggedUser();
 		User user = userService.findUserByEmail(username);
 		model.addAttribute("user", user);
-		return "editprofil";
+		return "editProfile";
 	}
 	
 	@POST
