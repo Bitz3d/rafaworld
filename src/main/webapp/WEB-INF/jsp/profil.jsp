@@ -68,15 +68,20 @@
             </c:choose>
         </td>
     </tr>
-    <table width="500" border="0" cellpadding="4" cellspacing="1"
-           align="center">
-        <td colspan="2" align="center" bgcolor="#fff">
-            <input type="button" value="<s:message code="button.zmianaHasla"/>" onclick="javascript:window.location.href='${pageContext.request.contextPath}/editPassword'"/>
-        </td>
-    </table>
+		<table width="500" border="0" cellpadding="4" cellspacing="1"
+			align="center">
+			<td align="center"><input type="button"
+				value="<s:message code="button.edycjaProfilu"/>"
+				onclick="window.location.href='${pageContext.request.contextPath}/editprofile'"/>
+			</td>
+			<td colspan="2" align="center" bgcolor="#fff"><input
+				type="button" value="<s:message code="button.zmianaHasla"/>"
+				onclick="javascript:window.location.href='${pageContext.request.contextPath}/editPassword'" />
+			</td>
+		</table>
 
 
-</table>
+	</table>
 
 
 </body>
