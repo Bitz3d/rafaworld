@@ -13,8 +13,8 @@
 		</sec:authorize>
 		<sec:authorize access="isAuthenticated()">
 			<a href="/profil"><s:message code="menu.profil"/></a>
-			<a href="/logout"><s:message code="menu.logout"/></a>
+			<a href="/logout"><s:message code="menu.logout"/></a>	
 		</sec:authorize>
-		</td>
+		</td>	
 	</tr>
 </table>
