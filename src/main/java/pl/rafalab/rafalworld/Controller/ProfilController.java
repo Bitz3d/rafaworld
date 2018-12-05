@@ -34,7 +34,7 @@ public class ProfilController {
 
         User user = userService.findUserByEmail(userName);
 
-        long nrRole = user.getRoles().iterator().next().getId();
+        int nrRole = user.getRoles().iterator().next().getId();
 
         user.setNrRoli(nrRole);
 
