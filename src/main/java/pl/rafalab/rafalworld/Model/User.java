@@ -38,7 +38,7 @@ public class User {
     private Set<Role> roles;
 
     @Transient
-    private long nrRoli;
+    private int nrRoli;
 
     @Transient
     private String newPassword;
@@ -87,10 +87,10 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-    public long getNrRoli() {
+    public int getNrRoli() {
         return nrRoli;
     }
-    public void setNrRoli(long nrRoli) {
+    public void setNrRoli(int nrRoli) {
         this.nrRoli = nrRoli;
     }
     public String getNewPassword() {

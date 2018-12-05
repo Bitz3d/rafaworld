@@ -10,6 +10,7 @@ import pl.rafalab.rafalworld.Repositories.UserRepository;
 import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 
 @Transactional
@@ -52,6 +53,12 @@ public class UserServiceImp implements UserService {
 	public void updateUserProfile(String newName, String newLastName, String newEmail, Long id) {
 		userRepository.updateUserProfile(newName, newLastName, newEmail, id);
 }
+
+	@Override
+	public List<User> findAll() {
+		
+		return userRepository.findAll();
+	}
 
 
 }
