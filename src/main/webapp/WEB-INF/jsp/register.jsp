@@ -70,12 +70,6 @@
         </tr>
 
     </table>
-    <table width="500" border="0" cellpadding="4" cellspacing="1"
-           align="center">
-        <td colspan="2" align="center" bgcolor="#fff">
-            <input type="submit" value="<s:message code="button.register"/>"/>
-        </td>
-    </table>
 
 </sf:form>
 
