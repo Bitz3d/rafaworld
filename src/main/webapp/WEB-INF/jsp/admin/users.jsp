@@ -39,7 +39,7 @@ function defaultTrBg(row){
 		<c:forEach var="u" items="${userList}">
 			<c:set var="count" value="${count + 1 }" scope="page"/>
 			<tr onmouseover="changeTrBg(this)" onmouseout="defaultTrBg(this)">
-				<td align="center"><c:out value="${count}"></c:out></td>
+		<%-- 		<td align="center"><c:out value="${count}"></c:out></td> --%>
 				<td align="center"><c:out value="${u.id}"></c:out></td>
 				<td align="center"><c:out value="${u.name}"></c:out></td>
 				<td align="center"><c:out value="${u.lastName}"></c:out></td>
