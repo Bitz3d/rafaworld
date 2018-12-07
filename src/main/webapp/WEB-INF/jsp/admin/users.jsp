@@ -9,13 +9,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><s:message code="menu.users"></s:message></title>
+<script type="text/javascript">
+function changeTrBg(row){
+	row.style.backgroundColor = "lightgray"
+	
+}
+function defaultTrBg(row){
+	row.style.backgroundColor = "white"
+	
+}
+</script>
 </head>
 <body>
 	<%@include file="/WEB-INF/incl/menu.app"%>
 	<h1>
 		<s:message code="menu.users"></s:message>
 	</h1>
-
+	<c:set var="count" value="0" scope="page"/>
 	<table width="1000" border="0" cellpadding="6" cellspacing="0">
 		<tr>
 			<td width="40" align="center"><s:message code="admin.user.id"></s:message></td>
@@ -27,7 +37,9 @@
 			<td width="90" align="center"><s:message code="profil.rola"></s:message></td>
 		</tr>
 		<c:forEach var="u" items="${userList}">
-			<tr>
+			<c:set var="count" value="${count + 1 }" scope="page"/>
+			<tr onmouseover="changeTrBg(this)" onmouseout="defaultTrBg(this)">
+				<td align="center"><c:out value="${count}"></c:out></td>
 				<td align="center"><c:out value="${u.id}"></c:out></td>
 				<td align="center"><c:out value="${u.name}"></c:out></td>
 				<td align="center"><c:out value="${u.lastName}"></c:out></td>
@@ -51,7 +63,23 @@
 			</tr>
 
 		</c:forEach>
-
+	</table>
+	<table width="1000" border="0" cellpadding="6" cellspacing="0">
+		<tr>
+			<td align="right">
+				<c:if test="${currentPage > 1 }">
+					<input type="button"
+						onclick="window.location.href='${pageContext.request.contextPath}/admin/users/${currentPage - 1 }'"
+						value='<s:message code="link.poprzedni"/>' />&nbsp;&nbsp;
+				</c:if> <c:if test="${currentPage < numberOfPages }">
+					<input type="button"
+						onclick="window.location.href='${pageContext.request.contextPath}/admin/users/${currentPage + 1 }'"
+						value='<s:message code="link.nastepny"/>' />&nbsp;&nbsp; 
+				</c:if>
+			</td>
+		</tr>
+	
+	
 	</table>
 
 </body>
