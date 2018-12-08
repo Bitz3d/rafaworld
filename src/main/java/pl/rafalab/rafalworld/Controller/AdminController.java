@@ -1,15 +1,11 @@
 package pl.rafalab.rafalworld.Controller;
 
-import java.lang.ProcessBuilder.Redirect;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-
 import javax.ws.rs.GET;
-
-import org.apache.logging.log4j.message.Message;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
@@ -18,7 +14,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -86,8 +81,8 @@ public class AdminController{
 		int activity = user.getActive();
 		adminService.updateUser(id, roleNumber, activity);
 		
-		return "redirect:admin/user/1";
-	}
+		return "redirect:/admin/users/1";
+		}
 	
 	
 	
