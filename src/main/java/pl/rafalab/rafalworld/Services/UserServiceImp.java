@@ -60,5 +60,10 @@ public class UserServiceImp implements UserService {
 		return userRepository.findAll();
 	}
 
+	@Override
+	public User findUserById(long id) {
+		return userRepository.findById(id);
+	}
+
 
 }

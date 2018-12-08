@@ -25,9 +25,10 @@ function defaultTrBg(row){
 	<h1>
 		<s:message code="menu.users"></s:message>
 	</h1>
-	<c:set var="count" value="0" scope="page"/>
+	<c:set var="count" value="${recordStartCounter }"/>
 	<table width="1000" border="0" cellpadding="6" cellspacing="0">
 		<tr>
+		    <td width="40" align="center"><s:message code="admin.numer"></s:message></td>
 			<td width="40" align="center"><s:message code="admin.user.id"></s:message></td>
 			<td width="200" align="center"><s:message code="register.name"></s:message></td>
 			<td width="200" align="center"><s:message
@@ -37,13 +38,13 @@ function defaultTrBg(row){
 			<td width="90" align="center"><s:message code="profil.rola"></s:message></td>
 		</tr>
 		<c:forEach var="u" items="${userList}">
-			<c:set var="count" value="${count + 1 }" scope="page"/>
+			<c:set var="count" value="${count + 1 }"/>
 			<tr onmouseover="changeTrBg(this)" onmouseout="defaultTrBg(this)">
 				<td align="center"><c:out value="${count}"></c:out></td>
-				<td align="center"><c:out value="${u.id}"></c:out></td>
-				<td align="center"><c:out value="${u.name}"></c:out></td>
-				<td align="center"><c:out value="${u.lastName}"></c:out></td>
-				<td align="center"><c:out value="${u.email}"></c:out></td>
+				<td align="center"><a href="edit/${u.id }"><c:out value="${u.id}"/></a></td>
+				<td align="center"><a href="edit/${u.id }"><c:out value="${u.name}"/></a></td>
+				<td align="center"><a href="edit/${u.id }"><c:out value="${u.lastName}"/></a></td>
+				<td align="center"><a href="edit/${u.id }"><c:out value="${u.email}"/></a></td>
 				<td align="center"><c:choose>
 						<c:when test="${u.active == 1 }">
 							<font color="green"><s:message code="word.tak"></s:message></font>
@@ -66,8 +67,9 @@ function defaultTrBg(row){
 	</table>
 	<table width="1000" border="0" cellpadding="6" cellspacing="0">
 		<tr>
-			<td align="right">
-				<c:if test="${currentPage > 1 }">
+			<td width="300" align="left"><s:message code="info.page" />
+				${currentPage} <s:message code="info.from" /> ${numberOfPages}</td>
+			<td align="right"><c:if test="${currentPage > 1 }">
 					<input type="button"
 						onclick="window.location.href='${pageContext.request.contextPath}/admin/users/${currentPage - 1 }'"
 						value='<s:message code="link.poprzedni"/>' />&nbsp;&nbsp;
@@ -75,11 +77,8 @@ function defaultTrBg(row){
 					<input type="button"
 						onclick="window.location.href='${pageContext.request.contextPath}/admin/users/${currentPage + 1 }'"
 						value='<s:message code="link.nastepny"/>' />&nbsp;&nbsp; 
-				</c:if>
-			</td>
+				</c:if></td>
 		</tr>
-	
-	
 	</table>
 
 </body>

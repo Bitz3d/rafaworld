@@ -10,5 +10,6 @@ import pl.rafalab.rafalworld.Model.User;
 public interface AdminService {
 	
 	Page<User> findAll(Pageable pageable); 
+	void updateUser(long id, int roleNumber, int activity);
 	
 }

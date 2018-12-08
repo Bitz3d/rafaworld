@@ -13,5 +13,6 @@ public interface UserService {
     public void updateUserPassword(String newPassword, String email);
     public void updateUserProfile(String newName, String newLastName, String newEmail, Long id);
     public List<User> findAll();
+    public User findUserById(long id);
 
 }

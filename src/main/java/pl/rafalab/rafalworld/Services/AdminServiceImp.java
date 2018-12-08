@@ -12,18 +12,20 @@ import pl.rafalab.rafalworld.Repositories.AdminRepository;
 
 @Transactional
 @Service("adminServices")
-public class AdminServiceImp implements AdminService {
-	
+public class AdminServiceImp implements AdminService{
 	
 	@Autowired
 	private AdminRepository adminRepository;
 	
 	@Override
-	public Page<User> findAll(Pageable pageable) {
-		
+	public Page<User> findAll(Pageable pageable){	
 		 Page<User> userList = adminRepository.findAll(pageable);
-		
 		return userList;
 	}
 
+	@Override
+	public void updateUser(long id, int roleNumber, int activity){
+		adminRepository.updateUserAvtivity(activity, id);
+		adminRepository.updateUserRole(roleNumber, id);
+	}
 }
