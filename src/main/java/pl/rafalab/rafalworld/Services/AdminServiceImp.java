@@ -30,7 +30,7 @@ public class AdminServiceImp implements AdminService{
 	}
 
 	@Override
-	public Page<User> searchUsers(Pageable pageable, String param) {
+	public Page<User> searchUsers(String param, Pageable pageable) {
 			Page<User> foundUsers =  adminRepository.searchUsers(param, pageable);
 		return foundUsers;
 	}

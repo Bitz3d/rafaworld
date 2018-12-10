@@ -21,8 +21,7 @@ public interface AdminRepository extends JpaRepository<User, Long>  {
 	@Query(value = "UPDATE user_role r SET r.role_id = :roleId WHERE r.user_id= :id", nativeQuery = true)
 	void updateUserRole(@Param("roleId") int intAvtive, @Param("id") long id);
 	
-	
-	@Query(value = "SELECT * FROM User u where u.name LIKE %:param% or u.last_name LIKE %:param% OR u.email LIKE %:param%", nativeQuery=true)
+	@Query(value = "SELECT * FROM user u WHERE u.name LIKE %:param% OR u.last_name LIKE %:param% OR email LIKE %:param%", nativeQuery = true)
 	Page<User> searchUsers(@Param("param") String param, Pageable pageable);
 	
 } 
