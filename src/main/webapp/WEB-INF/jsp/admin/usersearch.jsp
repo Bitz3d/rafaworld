@@ -58,10 +58,10 @@ function searchPerson(){
 			<c:set var="count" value="${count + 1 }"/>
 			<tr onmouseover="changeTrBg(this)" onmouseout="defaultTrBg(this)">
 				<td align="center"><c:out value="${count}"></c:out></td>
-				<td align="center"><a href="edit/${u.id }"><c:out value="${u.id}"/></a></td>
-				<td align="center"><a href="edit/${u.id }"><c:out value="${u.name}"/></a></td>
-				<td align="center"><a href="edit/${u.id }"><c:out value="${u.lastName}"/></a></td>
-				<td align="center"><a href="edit/${u.id }"><c:out value="${u.email}"/></a></td>
+				<td align="center"><a href="../edit/${u.id }"><c:out value="${u.id}"/></a></td>
+				<td align="center"><a href="../edit/${u.id }"><c:out value="${u.name}"/></a></td>
+				<td align="center"><a href="../edit/${u.id }"><c:out value="${u.lastName}"/></a></td>
+				<td align="center"><a href="../edit/${u.id }"><c:out value="${u.email}"/></a></td>
 				<td align="center"><c:choose>
 						<c:when test="${u.active == 1 }">
 							<font color="green"><s:message code="word.tak"></s:message></font>

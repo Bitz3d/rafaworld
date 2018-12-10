@@ -24,7 +24,7 @@ import pl.rafalab.rafalworld.Services.UserService;
 @Controller
 public class AdminController{
 
-	private int ELEMENTS =5;
+	private int ELEMENTS = 5;
 	
 	@Autowired
 	private AdminService adminService;
@@ -72,20 +72,32 @@ public class AdminController{
 		
 		return "admin/useredit"; 
 	}
-	
-	
+		
 	@PostMapping(value="/admin/updateuser/{id}")
 	@Secured(value={"ROLE_ADMIN"})
 	public String updateUser(@PathVariable("id") long id, User user){
 		int roleNumber = user.getNrRoli();
 		int activity = user.getActive();
-		adminService.updateUser(id, roleNumber, activity);
-		
+		adminService.updateUser(id, roleNumber, activity);		
 		return "redirect:/admin/users/1";
 		}
 	
-	
-	
+	@GetMapping(value="/admin/users/search/{page}/{seachWord}")
+	@Secured("ROLE_ADMIN")
+	public String searchUsers(@PathVariable("seachWord") String seachWord,@PathVariable("page") int page, Model model ){		
+		Page<User> pages = getAllUsersPageable(page - 1, seachWord);
+		int numberOfPages = pages.getTotalPages();
+		int currentPage = pages.getNumber();
+		List<User> userList = pages.getContent();
+ 		model.addAttribute("userList",userList);
+ 		model.addAttribute("numberOfPages",numberOfPages);
+ 		model.addAttribute("currentPage",currentPage + 1);
+ 		model.addAttribute("recordStartCounter",currentPage * ELEMENTS);
+		
+		return "admin/usersearch";
+		
+	}
+		
 	//helper methods
 	private Page<User> getAllUsersPageable(int page) {
 		Page<User> pages = adminService.findAll(PageRequest.of(page, ELEMENTS)); 
@@ -94,6 +106,16 @@ public class AdminController{
 			u.setNrRoli(roleNumber);
 		});
 		
+		return pages;		
+	}
+	
+	//helper methods
+	private Page<User> getAllUsersPageable(int page, String seachWord) {
+		Page<User> pages = adminService.searchUsers(PageRequest.of(page, ELEMENTS), seachWord); 
+		pages.forEach(u -> {
+			int roleNumber = u.getRoles().iterator().next().getId();
+			u.setNrRoli(roleNumber);
+		});
 		return pages;		
 	}
 	

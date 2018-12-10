@@ -11,5 +11,6 @@ public interface AdminService {
 	
 	Page<User> findAll(Pageable pageable); 
 	void updateUser(long id, int roleNumber, int activity);
+	Page<User> searchUsers(Pageable pageable, String param);
 	
 }

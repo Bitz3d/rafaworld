@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.ws.rs.GET;
 
 @Controller
-public class ErrorPageController implements ErrorController {
-
+public class ErrorPageController implements ErrorController {	
 
     @Override
     public String getErrorPath() {
@@ -21,5 +20,7 @@ public class ErrorPageController implements ErrorController {
 
         return "error";
     }
+    
+    
 
 }

@@ -20,12 +20,18 @@ public class AdminServiceImp implements AdminService{
 	@Override
 	public Page<User> findAll(Pageable pageable){	
 		 Page<User> userList = adminRepository.findAll(pageable);
-		return userList;
+		 return userList;
 	}
 
 	@Override
 	public void updateUser(long id, int roleNumber, int activity){
 		adminRepository.updateUserAvtivity(activity, id);
 		adminRepository.updateUserRole(roleNumber, id);
+	}
+
+	@Override
+	public Page<User> searchUsers(Pageable pageable, String param) {
+			Page<User> foundUsers =  adminRepository.searchUsers(param, pageable);
+		return foundUsers;
 	}
 }
