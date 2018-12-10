@@ -15,10 +15,9 @@
 <body>
 <%@include file="/WEB-INF/incl/menu.app"%>
 
-<img src="/resources/errorpage.jpg">
+<img src="/resources/images/errorpage.jpg">
 <h2>
     <s:message code="error.defaultErrorMessage"/>
-
 </h2>
 
 </body>

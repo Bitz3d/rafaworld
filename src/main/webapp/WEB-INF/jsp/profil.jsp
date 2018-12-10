@@ -40,7 +40,7 @@
     </tr>
     <tr>
         <td width="130" align="right" >
-            <s:message code="profil.czyAktywny"/>
+            <s:message code="profil.isActive"/>
         </td>
         <td width="270" align="left">
             <c:choose>
@@ -55,7 +55,7 @@
     </tr>
     <tr>
         <td width="130" align="right" >
-            <s:message code="profil.czyAktywny"/>
+            <s:message code="profil.isActive"/>
         </td>
         <td width="270" align="left">
             <c:choose>

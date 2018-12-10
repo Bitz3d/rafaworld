@@ -1,9 +1,6 @@
 package pl.rafalab.rafalworld.Services;
 
 import java.util.List;
-
-import org.springframework.data.repository.query.Param;
-
 import pl.rafalab.rafalworld.Model.User;
 
 public interface UserService {
