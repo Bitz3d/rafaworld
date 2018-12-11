@@ -57,6 +57,13 @@ public class AdminController{
 			return "admin/users";
 	}
 	
+	@GetMapping(value="/admin/users/importusers")
+	@Secured(value={"ROLE_ADMIN"})
+	public String getUploadPage(Model model){
+	
+		return "admin/importusers";
+	}
+	
 	@GetMapping(value="/admin/users/edit/{id}")
 	@Secured(value={"ROLE_ADMIN"})
 	public String edituser(@PathVariable("id") int id, Model model)
