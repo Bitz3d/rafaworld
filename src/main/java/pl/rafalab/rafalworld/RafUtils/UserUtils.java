@@ -10,17 +10,11 @@ public class UserUtils {
     public static String getLoggedUser(){
 
         String username=null;
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         if(!(authentication instanceof AnonymousAuthenticationToken)){
-
             username =authentication.getName();
-
         }
-
         return username;
-
     }
 
 
