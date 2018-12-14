@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,10 +15,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import pl.rafalab.rafalworld.Model.User;
 import pl.rafalab.rafalworld.RafUtils.RafUtils;
+import pl.rafalab.rafalworld.Services.AdminService;
 
 @Controller
 public class UploadFileController {
 
+	
+	@Autowired
+	AdminService adminService;
 	
 	@PostMapping("/admin/users/upload")
 	@Secured("ROLE_ADMIN")
@@ -33,7 +38,8 @@ public class UploadFileController {
 			Files.write(fileAndPath, mfile.getBytes());
 			file = new File(fileAndPath.toString());
 			List<User> userList = RafUtils.readUserXmlFile(file);
-			userList.forEach(u -> System.out.println(u.getEmail()+" || "+ u.getName()));
+			adminService.insertBatch(userList);
+			file.delete();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
