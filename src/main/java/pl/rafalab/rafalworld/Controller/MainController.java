@@ -16,7 +16,6 @@ public class MainController {
     @RequestMapping(value = {"/","/index"})
     public String showMainPage(){
     	LOG.debug("**** Wywołano -> showMainPage()");
-    	
         return "index";
     }
 }
