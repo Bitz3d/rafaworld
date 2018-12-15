@@ -6,6 +6,10 @@ public class FileUpload {
 	
 	private MultipartFile filename;
 
+	public FileUpload(MultipartFile filename) {
+		this.filename = filename;
+	}
+
 	public MultipartFile getFile() {
 		return filename;
 	}

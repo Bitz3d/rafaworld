@@ -15,9 +15,15 @@ public class Role {
     @Column(name = "role")
     @NotNull
     private String role;
+    
+    public Role() {
 
+	}
 
-    public int getId() {
+    public Role(@NotNull String role) {
+		this.role = role;
+	}
+	public int getId() {
         return id;
     }
     public void setId(int id) {

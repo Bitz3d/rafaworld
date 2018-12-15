@@ -44,7 +44,21 @@ public class User {
     private String newPassword;
 
 
-    //gettery i settery
+    public User() {
+		
+	}
+    
+    public User(@NotNull String email, @NotNull String password, @NotNull String name,
+			@NotNull String lastName, @NotNull int active, Set<Role> roles) {
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.lastName = lastName;
+		this.active = active;
+		this.roles = roles;
+	}
+    	
+	//gettery i settery
     public long getId() {
         return id;
     }
