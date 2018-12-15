@@ -15,5 +15,6 @@ public interface AdminService {
 	void updateUser(long id, int roleNumber, int activity);
 	Page<User> searchUsers(String param, Pageable pageable);
 	void insertBatch(List<User> userList);
+	void deleteUserById(long id);
 	
 }

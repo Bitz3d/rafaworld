@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import javax.ws.rs.GET;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
@@ -13,6 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +28,9 @@ import pl.rafalab.rafalworld.Services.UserService;
 @Controller
 public class AdminController{
 
+	
+	private static final Logger LOG = LoggerFactory.getLogger(AdminController.class);
+	
 	private int ELEMENTS = 5;
 	
 	@Autowired
@@ -105,6 +112,17 @@ public class AdminController{
 		model.addAttribute("userList", userList);
 		return "admin/usersearch";
 }
+	
+	@GetMapping(value="/admin/users/delete/{id}")
+	@Secured("ROLE_ADMIN")
+	public String deleteUser(@PathVariable("id") long id){
+		LOG.debug("**** WYWOŁANIE METODY AdminServiceImp.deleteUserById = "+id);
+		adminService.deleteUserById(id);
+		
+		return "redirect:/admin/users/1";
+	}
+	
+	
 		
 	//helper methods
 	private Page<User> getAllUsersPageable(int page, boolean search, String seachWord) {

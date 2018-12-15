@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +24,8 @@ import pl.rafalab.rafalworld.Repositories.RoleRepository;
 @Transactional
 @Service("adminServices")
 public class AdminServiceImp implements AdminService{
+	
+	private static final Logger LOG = LoggerFactory.getLogger(AdminServiceImp.class); 
 	
 	@Autowired
 	private AdminRepository adminRepository;
@@ -69,4 +73,14 @@ public class AdminServiceImp implements AdminService{
 		});
 		
 	}
+
+	@Override
+	public void deleteUserById(long id) {
+		LOG.info("**** USUWAMY UŻYTKOWNIKA O ID = "+id +" || METODA > deleteUserFromUserRole()");
+		adminRepository.deleteUserFromUserRole(id);
+		adminRepository.deleteUserFromUser(id);
+		LOG.info("****UŻYTKOWNIKA O ID = "+id +" USUNIĘTY");
+	}
+
+
 }

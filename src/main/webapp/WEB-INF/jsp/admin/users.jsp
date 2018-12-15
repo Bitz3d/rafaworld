@@ -81,6 +81,18 @@ function startSerach(pParam){
 				</c:otherwise>
 			</c:choose>
 			</td>
+			<td align="center">
+				<c:choose>
+					<c:when test="${u.nrRoli == 1 }">
+						<img src="/resources/images/delete-462216_640.png" width="16" height="16"/>
+					</c:when>
+					<c:otherwise>
+						<a href="delete/${u.id}">
+							<img src="/resources/images/cancel-146131_640.png" width="16" height="16" title="<s:message code="delete.user"/>"/>
+						</a>
+					</c:otherwise>
+				</c:choose>
+			</td>
 		</tr>
 	</c:forEach>
 </table>
