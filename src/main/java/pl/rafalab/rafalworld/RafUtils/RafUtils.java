@@ -3,11 +3,13 @@ package pl.rafalab.rafalworld.RafUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -46,13 +48,28 @@ public class RafUtils {
 					u.setNrRoli(Integer.valueOf(e.getElementsByTagName("nrroli").item(0).getTextContent()));
 					userList.add(u);
     			}
-    			
     		}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
      	return userList;
 	}
+    
+    /**
+	 * Code Generator
+	 * @return String
+	 */
+    public static String randomCodeGenerator(){
+    	String randomCode="";
+    	String sign ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    	Random random = new Random();
+    	for(int i=0;i<32;i++){
+    		int liczba = random.nextInt(sign.length());
+    		randomCode += sign.substring(liczba, liczba+1);
+    	}
+    	return randomCode;
+    }
+    
 
 
 }

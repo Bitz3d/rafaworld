@@ -26,6 +26,7 @@ public class UserServiceImp implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
+
     @Override
     public User findUserByEmail(String emial) {
         return userRepository.findByEmail(emial);
@@ -34,7 +35,7 @@ public class UserServiceImp implements UserService {
     @Override
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setActive(1);
+        user.setActive(0);
 
         Role role = roleRepository.findByRole("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(role)));
@@ -63,6 +64,11 @@ public class UserServiceImp implements UserService {
 	@Override
 	public User findUserById(long id) {
 		return userRepository.findById(id);
+	}
+
+	@Override
+	public void updateUserActivation(int active, String activationCode) {
+		userRepository.updateActivation(active,activationCode);
 	}
 
 

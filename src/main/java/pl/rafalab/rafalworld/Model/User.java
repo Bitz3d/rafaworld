@@ -29,7 +29,9 @@ public class User {
     @NotNull
     private String lastName;
 
-    @Column(name = "active")
+    
+
+	@Column(name = "active")
     @NotNull
     private int active;
 
@@ -43,6 +45,9 @@ public class User {
     @Transient
     private String newPassword;
 
+    @Column(name="activation_code")
+    private String activationCode;
+    
 
     public User() {
 		
@@ -59,6 +64,14 @@ public class User {
 	}
     	
 	//gettery i settery
+    public String getActivationCode() {
+		return activationCode;
+	}
+
+	public void setActivationCode(String activationCode) {
+		this.activationCode = activationCode;
+	}
+    
     public long getId() {
         return id;
     }

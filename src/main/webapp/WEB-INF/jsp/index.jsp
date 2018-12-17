@@ -9,5 +9,6 @@
 <body>
 <%@include file="/WEB-INF/incl/menu.app"%>
 <h1>Siema</h1>
+<h3><c:out value="${message}"></c:out></h3>
 </body>
 </html>
