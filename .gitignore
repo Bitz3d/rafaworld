@@ -25,6 +25,9 @@
 /.nb-gradle/
 /.metadata/
 
-
-.vscode
-.logs
+/.vscode
+/.logs
+/.mvn/wrapper
+/bin
+mvnw
+mvnw.cmd
