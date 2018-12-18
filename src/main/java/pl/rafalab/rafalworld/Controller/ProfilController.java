@@ -1,5 +1,7 @@
 package pl.rafalab.rafalworld.Controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -7,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.rafalab.rafalworld.Model.User;
-import pl.rafalab.rafalworld.RafUtils.RafUtils;
 import pl.rafalab.rafalworld.RafUtils.UserUtils;
 import pl.rafalab.rafalworld.Services.UserService;
 import pl.rafalab.rafalworld.Validator.ChangePasswordValidator;
@@ -25,19 +26,17 @@ public class ProfilController {
 
     @Autowired
     private MessageSource messageSource;
+    
+    private static final Logger LOG = LoggerFactory.getLogger(MainController.class);
+    
 
     @GET
     @RequestMapping(value = "/profil")
     public String showUserProfile(Model model){
-
         String userName= UserUtils.getLoggedUser();
-
         User user = userService.findUserByEmail(userName);
-
         int nrRole = user.getRoles().iterator().next().getId();
-
         user.setNrRoli(nrRole);
-
         model.addAttribute("user", user);
 
         return "profil";
@@ -47,10 +46,8 @@ public class ProfilController {
     @GET
     @RequestMapping(value = "/editPassword")
     public String editpassword(Model model){
-
         String username = UserUtils.getLoggedUser();
         User user = userService.findUserByEmail(username);
-
         model.addAttribute("user",user);
 
         return "editPassword";
@@ -80,6 +77,7 @@ public class ProfilController {
 	public String changeUserData(Model model) {
 		String username = UserUtils.getLoggedUser();
 		User user = userService.findUserByEmail(username);
+		LOG.info("******************  User DATA editprofile() -> " +user.getName()+" "+user.getLastName());
 		model.addAttribute("user", user);
 		return "editProfile";
 	}
@@ -93,6 +91,7 @@ public class ProfilController {
 			returnPage = "editProfile";
 		} else {
 			userService.updateUserProfile(user.getName(), user.getLastName(), user.getEmail(), user.getId());
+			LOG.info("******************  User DATA updateprofile() -> " +user.getName()+" "+user.getLastName());
 			model.addAttribute("message", messageSource.getMessage("profilEdit.success", null, locale));
 			returnPage = "afterEdit";
 		}

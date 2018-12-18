@@ -46,9 +46,9 @@ public class RegisterController {
         } else {
         	user.setActivationCode(RafUtils.randomCodeGenerator());
         	String getHost= request.getRequestURL().toString();
-        	System.out.println();
+
         	String text = "Wymagane potwierdzenie rejestracji. Kliknij w link, aby aktywować konto: "+
-        		   getHost+"activatelink/"+user.getActivationCode();
+        		   getHost+"/activatelink/"+user.getActivationCode();
 
             userService.saveUser(user);
             emailSender.sendEmail(user.getEmail(), messageSource.getMessage("mail.subject", null, locale), text);
@@ -58,7 +58,7 @@ public class RegisterController {
         return returnPage;
     }
     
-    @GetMapping(value="/activatelink/{activationCode}")
+    @GetMapping(value="/adduser/activatelink/{activationCode}")
     public String activateUser(@PathVariable("activationCode") String activationCode, Model model, Locale locale){
     	userService.updateUserActivation(1, activationCode);
     	model.addAttribute("message", messageSource.getMessage("user.register.success",null ,locale));
