@@ -1,6 +1,5 @@
 package pl.rafalab.rafalworld.Services;
 
-import java.util.Properties;
 
 import javax.mail.internet.MimeMessage;
 import org.slf4j.Logger;
@@ -22,6 +21,7 @@ public class EmailSenderImpl implements EmailSender {
 	private JavaMailSender javaMailSender;
 	
 	
+	//Bean made for test error fix!
 	@Bean
 	public JavaMailSender getJavaMailSender() {
 	    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();

@@ -9,29 +9,18 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import pl.rafalab.rafalworld.RafalworldApplicationTests;
 import pl.rafalab.rafalworld.Model.Role;
 import pl.rafalab.rafalworld.Model.User;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@Import(RafalworldApplicationTests.class) 
-public class EntityTest {
+public class UserEntityTest {
 
 	@Autowired
 	private TestEntityManager tem;
-	
-	
-	@Test
-	public void mappingRole(){
-		Role e = this.tem.persistFlushFind(new Role("ROLE_USER"));
-		
-		Assertions.assertThat(e.getRole()).isEqualTo("ROLE_USER");
-	}
-	
+
 	@Test
 	public void mappingUser(){	
 		User u = this.tem.persistFlushFind(new User("test@test.pl", "aA!@3456", 
