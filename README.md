@@ -2,7 +2,7 @@
 to run application u have to add connection to database, also add email and pass to email in application.properties
 
 DataBase data in
-#DataSource i DataBase
+# DataSource i DataBase
 
 Mail data in 
 # MAIL
