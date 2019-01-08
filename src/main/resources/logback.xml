@@ -14,7 +14,7 @@
 			</pattern>
 		</encoder>
 		<file>
-			.logs/rafalworld.log
+				.logs/rafalworld.log
 		</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
 			<fileNamePattern>

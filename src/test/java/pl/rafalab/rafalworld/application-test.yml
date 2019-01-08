@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    username:
+    password:
+url: jdbc:h2:mem:tests;DB_CLOSE_DELAY=-1;MODE=PostgreSQL;DB_CLOSE_ON_EXIT=FALSE
+
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=rafalworld89@gmail.com
+spring.mail.password=aA!@3456
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true

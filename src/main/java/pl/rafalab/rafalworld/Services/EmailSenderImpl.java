@@ -1,7 +1,5 @@
 package pl.rafalab.rafalworld.Services;
 
-import java.util.Properties;
-
 import javax.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,14 +18,7 @@ public class EmailSenderImpl implements EmailSender {
 	private static final Logger LOG = LoggerFactory.getLogger(EmailSenderImpl.class);	
 	@Autowired
 	private JavaMailSender javaMailSender;
-	
-	
-	@Bean
-	public JavaMailSender getJavaMailSender() {
-	    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-	    return mailSender;
-	}
-	
+
 	
 	
 	@Override
