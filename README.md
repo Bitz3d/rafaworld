@@ -21,7 +21,11 @@ and insert values
 
  INSERT INTO `role` VALUES (1,'ROLE_ADMIN'); INSERT INTO `role` VALUES (2,'ROLE_USER');
  
+ # Make Admin
  
+ Services.UserserviceImpl.saveUser
+ Role role = roleRepository.findByRole("ROLE_USER"); - change "ROLE_USER" -> "ROLE_ADMIN"
+  
  #add mail data - application.properties
  
  ![image](https://user-images.githubusercontent.com/30048214/50859541-eedb9900-1393-11e9-890a-dd12edc572e2.png)
