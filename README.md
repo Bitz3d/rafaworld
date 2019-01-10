@@ -23,7 +23,7 @@ and insert values
  
  # Make Admin
  
- Services.UserserviceImpl.saveUser
+ Services.UserserviceImpl.saveUser -> 
  Role role = roleRepository.findByRole("ROLE_USER"); - change "ROLE_USER" -> "ROLE_ADMIN"
   
  #add mail data - application.properties
