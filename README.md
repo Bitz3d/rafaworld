@@ -21,7 +21,7 @@ and insert values
 
  INSERT INTO `role` VALUES (1,'ROLE_ADMIN'); INSERT INTO `role` VALUES (2,'ROLE_USER');
  
- # Make Admin
+ how to make admin
  
  Services.UserserviceImpl.saveUser -> 
  Role role = roleRepository.findByRole("ROLE_USER"); - change "ROLE_USER" -> "ROLE_ADMIN"
